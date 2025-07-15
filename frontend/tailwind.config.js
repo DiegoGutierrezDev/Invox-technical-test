@@ -6,6 +6,9 @@ export default {
       colors: {
         purple: "#4b27e4",
       },
+      fontFamily: {
+        roboto: ["Roboto", "sans-serif"],
+      },
     },
   },
   plugins: [],

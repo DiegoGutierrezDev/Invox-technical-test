@@ -1,0 +1,14 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+h1 {
+    font-size: xx-large;
+    font-weight: 700;
+    font-family: theme('fontFamily.roboto');
+}
+
+h2 {
+    font-size: larger;
+    font-family: theme('fontFamily.roboto');
+}

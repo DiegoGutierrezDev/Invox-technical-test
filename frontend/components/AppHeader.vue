@@ -1,16 +1,14 @@
 <template>
   <header>
-    <div class="flex justify-between items-center">
-      <div class="text-center p-2">
+    <div class="flex justify-around items-center">
+      <div class="p-3">
         <RouterLink to="/" class="flex items-center">
-          <img src="/public/logo-invox.png" alt="invox-logo" class="h-24" />
+          <img src="/public/logo-invox.png" alt="invox-logo" class="h-16" />
         </RouterLink>
       </div>
 
-      <div
-        class="w-80 md:w-96 flex justify-around items-center text-center font-hind text-white"
-      >
-        <h1>heee</h1>
+      <div class="flex justify-around text-center">
+        <AppButton text="Accede" />
       </div>
     </div>
   </header>
