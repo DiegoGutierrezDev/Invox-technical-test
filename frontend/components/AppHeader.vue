@@ -1,6 +1,6 @@
 <template>
   <header>
-    <div class="flex justify-around items-center">
+    <div class="flex justify-around items-center mb-8">
       <div class="p-3">
         <RouterLink to="/" class="flex items-center">
           <img src="/public/logo-invox.png" alt="invox-logo" class="h-16" />
