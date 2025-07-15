@@ -7,3 +7,8 @@ h1 {
     font-weight: 700;
     font-family: theme('fontFamily.roboto');
 }
+
+h2 {
+    font-size: larger;
+    font-family: theme('fontFamily.roboto');
+}

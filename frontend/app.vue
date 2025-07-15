@@ -6,6 +6,5 @@ import AppHeader from "./components/AppHeader.vue";
   <div>
     <AppHeader />
     <NuxtPage />
-    <NuxtWelcome />
   </div>
 </template>
