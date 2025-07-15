@@ -15,6 +15,7 @@
     "typescript": "^5.8.3"
   },
   "dependencies": {
+    "aws-sdk": "^2.1692.0",
     "serverless": "^4.17.1",
     "serverless-offline": "^14.4.0"
   }
