@@ -11,8 +11,10 @@
 
     <div class="grid justify-center mb-20 gap-4">
       <h1>¿Aún no eres usuario?</h1>
-      <AppButton text="Registrate aquí" />
-      <h2>Y disfruta de las ventajas</h2>
+      <h2>
+        <router-link to="#">Registrate aquí</router-link> y disfruta de las
+        ventajas
+      </h2>
     </div>
   </div>
 </template>

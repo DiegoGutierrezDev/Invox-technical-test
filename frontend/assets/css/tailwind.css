@@ -12,3 +12,7 @@ h2 {
     font-size: larger;
     font-family: theme('fontFamily.roboto');
 }
+
+a {
+    color:theme('colors.purple')
+}
