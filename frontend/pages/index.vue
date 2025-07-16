@@ -6,7 +6,7 @@
     </div>
 
     <div class="flex justify-center align-center">
-      <AppYouTubeEmbed videoId="91QVNqTSxeU" class="w-8/12" />
+      <AppYouTubeEmbed video-id="91QVNqTSxeU" class="w-8/12" />
     </div>
 
     <div class="grid justify-center mb-20 gap-4">
