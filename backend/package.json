@@ -10,12 +10,16 @@
   "license": "ISC",
   "description": "",
   "devDependencies": {
+    "@serverless/typescript": "^4.17.1",
+    "@types/aws-lambda": "^8.10.150",
     "@types/node": "^24.0.14",
+    "@types/serverless": "^3.12.27",
     "ts-node": "^10.9.2",
     "typescript": "^5.8.3"
   },
   "dependencies": {
-    "aws-sdk": "^2.1692.0",
+    "@aws-sdk/client-dynamodb": "^3.846.0",
+    "@aws-sdk/lib-dynamodb": "^3.846.0",
     "serverless": "^4.17.1",
     "serverless-offline": "^14.4.0"
   }
