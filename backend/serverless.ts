@@ -50,23 +50,6 @@ const serverlessConfiguration: AWS = {
   },
   package: { individually: true },
   custom: {
-  },
-    resources: {
-    Resources: {
-      UsersTable: {
-        Type: "AWS::DynamoDB::Table",
-        Properties: {
-          TableName: "Users",
-          AttributeDefinitions: [
-            { AttributeName: "id", AttributeType: "S" }
-          ],
-          KeySchema: [
-            { AttributeName: "id", KeyType: "HASH" }
-          ],
-          BillingMode: "PAY_PER_REQUEST"
-        }
-      }
-    }
   }
 };
 
