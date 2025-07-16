@@ -5,6 +5,7 @@ export default {
     extend: {
       colors: {
         purple: "#4b27e4",
+        "dark-purple": "#331c9aff",
       },
       fontFamily: {
         roboto: ["Roboto", "sans-serif"],
