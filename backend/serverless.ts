@@ -6,8 +6,22 @@ const serverlessConfiguration: AWS = {
   plugins: [],
   provider: {
     name: 'aws',
-    runtime: 'nodejs18.x',
-    region: 'eu-west-1',
+    runtime: 'nodejs22.x',
+    region: 'us-east-1',
+     environment: {
+      USERS_TABLE: 'Users',
+    },
+    iam: {
+      role: {
+        statements: [
+          {
+            Effect: 'Allow',
+            Action: ['dynamodb:PutItem'],
+            Resource: 'arn:aws:dynamodb:us-east-1:*:table/Users',
+          },
+        ],
+      },
+    },
   },
   functions: {
     hello: {
@@ -21,10 +35,39 @@ const serverlessConfiguration: AWS = {
         },
       ],
     },
+    createUser: {
+        handler: 'src/handlers/users/createUser.createUserHandler',
+            events: [
+            { 
+                http: {
+                path: 'users',
+                method: 'post',
+                }
+            }
+        ],
+    }
+
   },
   package: { individually: true },
   custom: {
   },
+    resources: {
+    Resources: {
+      UsersTable: {
+        Type: "AWS::DynamoDB::Table",
+        Properties: {
+          TableName: "Users",
+          AttributeDefinitions: [
+            { AttributeName: "id", AttributeType: "S" }
+          ],
+          KeySchema: [
+            { AttributeName: "id", KeyType: "HASH" }
+          ],
+          BillingMode: "PAY_PER_REQUEST"
+        }
+      }
+    }
+  }
 };
 
 module.exports = serverlessConfiguration;
