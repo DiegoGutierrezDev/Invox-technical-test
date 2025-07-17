@@ -8,8 +8,14 @@
       </div>
 
       <div class="flex justify-around text-center">
-        <AppButton text="Accede" />
+        <AppButton text="Accede" @click="router.push('/access')" />
       </div>
     </div>
   </header>
 </template>
+
+<script setup>
+import { useRouter } from "vue-router";
+
+const router = useRouter();
+</script>
