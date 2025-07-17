@@ -42,6 +42,7 @@ const serverlessConfiguration: AWS = {
                 http: {
                 path: 'users',
                 method: 'post',
+                cors: true
                 }
             }
         ],

@@ -15,7 +15,12 @@ export const createUserHandler: APIGatewayProxyHandler = async (event) => {
 
     return {
       statusCode: 201,
+      headers: {
+         'Access-Control-Allow-Origin': '*',
+         'Acess-Control-Allow-Headers': '*',
+      },
       body: JSON.stringify(user),
+      
     };
   } catch (error) {
     console.error('Error:', error);

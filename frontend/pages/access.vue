@@ -25,10 +25,10 @@
       </div>
 
       <form
-        @submit.prevent="
-          activeTab === 'login' ? submitLogin() : submitRegister()
-        "
         class="space-y-4"
+        @submit.prevent="
+          activeTab === 'login' ? 'submitLogin()' : submitRegister()
+        "
       >
         <input
           v-if="activeTab === 'register'"
@@ -64,7 +64,8 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
+/* eslint-disable  @typescript-eslint/no-explicit-any */
+import { reactive, ref } from "vue";
 
 const activeTab = ref<"login" | "register">("login");
 const errorMessage = ref<string | null>(null);
@@ -81,14 +82,15 @@ const access = reactive<Form>({
   password: "",
 });
 
-const submitLogin = () => {
-  console.log("Login con:", access.value);
-};
-
-const endpoint =
-  "https://n1c91b8y49.execute-api.us-east-1.amazonaws.com/dev/users";
+// const submitLogin = () => {
+//   console.log("Login con:", access.value);
+// };
 
 const submitRegister = async () => {
+  const endpoint =
+    activeTab.value === "login"
+      ? "Login"
+      : "https://n1c91b8y49.execute-api.us-east-1.amazonaws.com/dev/users";
   errorMessage.value = "";
 
   try {
@@ -97,7 +99,7 @@ const submitRegister = async () => {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(access.value),
+      body: JSON.stringify(access),
     });
 
     const data = await response.json();
@@ -105,10 +107,6 @@ const submitRegister = async () => {
     if (!response.ok) {
       throw new Error(data.error || "Algo salió mal");
     }
-
-    message.value = "¡Usuario registrado con éxito!";
-
-    access.value = { name: "", email: "", password: "" };
   } catch (err: any) {
     errorMessage.value = err.message || "Error desconocido";
   }
