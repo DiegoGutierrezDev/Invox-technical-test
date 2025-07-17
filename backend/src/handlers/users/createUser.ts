@@ -11,7 +11,7 @@ export const createUserHandler: APIGatewayProxyHandler = async (event) => {
         body: JSON.stringify({ error: 'Missing name or email' }),
       };
     }
-    const user = await createUser(body.name, body.email);
+    const user = await createUser(body.name, body.email, body.password);
 
     return {
       statusCode: 201,
