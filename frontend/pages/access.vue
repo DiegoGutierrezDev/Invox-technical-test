@@ -66,6 +66,7 @@
 <script setup lang="ts">
 /* eslint-disable  @typescript-eslint/no-explicit-any */
 import { reactive, ref } from "vue";
+import { useRouter } from "vue-router";
 
 const activeTab = ref<"login" | "register">("login");
 const errorMessage = ref<string | null>(null);
@@ -82,9 +83,7 @@ const access = reactive<Form>({
   password: "",
 });
 
-// const submitLogin = () => {
-//   console.log("Login con:", access.value);
-// };
+const router = useRouter();
 
 const submitRegister = async () => {
   const endpoint =
@@ -107,6 +106,8 @@ const submitRegister = async () => {
     if (!response.ok) {
       throw new Error(data.error || "Algo salió mal");
     }
+
+    router.push("/dashboard");
   } catch (err: any) {
     errorMessage.value = err.message || "Error desconocido";
   }
