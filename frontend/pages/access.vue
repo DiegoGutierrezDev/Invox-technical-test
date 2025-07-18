@@ -24,12 +24,7 @@
         </button>
       </div>
 
-      <form
-        class="space-y-4"
-        @submit.prevent="
-          activeTab === 'login' ? 'submitLogin()' : submitRegister()
-        "
-      >
+      <form class="space-y-4" @submit.prevent="authUser()">
         <input
           v-if="activeTab === 'register'"
           v-model="access.name"
@@ -85,10 +80,10 @@ const access = reactive<Form>({
 
 const router = useRouter();
 
-const submitRegister = async () => {
+const authUser = async () => {
   const endpoint =
     activeTab.value === "login"
-      ? "Login"
+      ? "https://n1c91b8y49.execute-api.us-east-1.amazonaws.com/dev/login"
       : "https://n1c91b8y49.execute-api.us-east-1.amazonaws.com/dev/users";
   errorMessage.value = "";
 

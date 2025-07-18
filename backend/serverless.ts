@@ -60,7 +60,19 @@ const serverlessConfiguration: AWS = {
                 }
             }
         ],
-    }
+    },
+    loginUser: {
+  handler: "src/handlers/users/loginUser.loginUserHandler",
+  events: [
+    {
+      http: {
+        path: "login",
+        method: "post",
+        cors: true,
+      },
+    },
+  ],
+},
 
   },
   package: { individually: true },
