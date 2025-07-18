@@ -18,15 +18,21 @@ export const createUserHandler: APIGatewayProxyHandler = async (event) => {
       headers: {
          'Access-Control-Allow-Origin': '*',
          'Acess-Control-Allow-Headers': '*',
+        'Access-Control-Allow-Credentials': 'true',
       },
       body: JSON.stringify(user),
       
     };
   } catch (error) {
     console.error('Error:', error);
-    return {
+     return {
       statusCode: 500,
-      body: JSON.stringify({ error: 'Internal Server Error' }),
+      headers: {
+        'Access-Control-Allow-Origin': '*',
+         'Acess-Control-Allow-Headers': '*',
+        'Access-Control-Allow-Credentials': 'true',
+      },
+      body: JSON.stringify({ message: 'Error al crear el usuario' }),
     };
   }
 };
