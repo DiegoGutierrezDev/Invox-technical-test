@@ -1,14 +1,14 @@
-import { APIGatewayProxyHandler } from 'aws-lambda';
-import { createUser } from '../../services/createUserService';
+import { APIGatewayProxyHandler } from "aws-lambda";
+import { createUser } from "../../services/users/createUserService";
 
 export const createUserHandler: APIGatewayProxyHandler = async (event) => {
   try {
-    const body = JSON.parse(event.body || '{}');
+    const body = JSON.parse(event.body || "{}");
 
     if (!body.name || !body.email) {
       return {
         statusCode: 400,
-        body: JSON.stringify({ error: 'Missing name or email' }),
+        body: JSON.stringify({ error: "Missing name or email" }),
       };
     }
     const user = await createUser(body.name, body.email, body.password);
@@ -16,23 +16,22 @@ export const createUserHandler: APIGatewayProxyHandler = async (event) => {
     return {
       statusCode: 201,
       headers: {
-         'Access-Control-Allow-Origin': '*',
-         'Acess-Control-Allow-Headers': '*',
-        'Access-Control-Allow-Credentials': 'true',
+        "Access-Control-Allow-Origin": "*",
+        "Acess-Control-Allow-Headers": "*",
+        "Access-Control-Allow-Credentials": "true",
       },
       body: JSON.stringify(user),
-      
     };
   } catch (error) {
-    console.error('Error:', error);
-     return {
+    console.error("Error:", error);
+    return {
       statusCode: 500,
       headers: {
-        'Access-Control-Allow-Origin': '*',
-         'Acess-Control-Allow-Headers': '*',
-        'Access-Control-Allow-Credentials': 'true',
+        "Access-Control-Allow-Origin": "*",
+        "Acess-Control-Allow-Headers": "*",
+        "Access-Control-Allow-Credentials": "true",
       },
-      body: JSON.stringify({ message: 'Error al crear el usuario' }),
+      body: JSON.stringify({ message: "Error al crear el usuario" }),
     };
   }
 };

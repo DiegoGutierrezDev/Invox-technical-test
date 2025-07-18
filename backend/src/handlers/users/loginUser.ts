@@ -3,10 +3,9 @@ import {
   InitiateAuthCommand,
 } from "@aws-sdk/client-cognito-identity-provider";
 import type { APIGatewayProxyHandler } from "aws-lambda";
+import { poolData } from "@aws/cognito";
 
-const client = new CognitoIdentityProviderClient({ region: "us-east-1" });
-
-const userPoolClientId = "4eum6d6164su7tv4fthg1g7ckk";
+const client = new CognitoIdentityProviderClient({ region: poolData.region });
 
 export const loginUserHandler: APIGatewayProxyHandler = async (event) => {
   try {
@@ -15,7 +14,7 @@ export const loginUserHandler: APIGatewayProxyHandler = async (event) => {
 
     const command = new InitiateAuthCommand({
       AuthFlow: "USER_PASSWORD_AUTH",
-      ClientId: userPoolClientId,
+      ClientId: poolData.ClientId,
       AuthParameters: {
         USERNAME: email,
         PASSWORD: password,
